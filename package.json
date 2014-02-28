@@ -1,0 +1,9 @@
+{
+	"name" : "timeScrub.js",
+	"description" : "Watches simulations and saves time steps with MongoDB",
+	"version" : "0.0.1",
+	"private" : true,
+	"dependencies" : {
+		"mongoose": "*"
+	}
+}
