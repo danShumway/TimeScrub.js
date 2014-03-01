@@ -1,4 +1,6 @@
 //timescrub.js
+var timescrub = require('./app.js');
+var scrubber = new timescrub.app();
 
 //I want to have a test file I can run in node.
 var objects = new Array();
@@ -14,7 +16,7 @@ var makeObject = function(x, y) {
 
 	this.trace = function()
 	{
-		return { this.x, this.y };
+		return { "x" : this.x, "y" : this.y };
 	}
 }
 
@@ -25,6 +27,8 @@ function Setup()
 	{
 		objects.push(new makeObject(Math.random()*500, Math.random()*500));
 	}
+
+	scrubber.AddWatch(objects, "objects");
 }
 
 function GameLoop()
@@ -39,8 +43,8 @@ function GameLoop()
 		if(objects[i].y > stageDimensions || objects[i].y < 0)
 			objects[i].yDirection *= -1;
 
-		objects[i].x += xDirection;
-		objects[i].y += yDirection;
+		objects[i].x += objects[i].xDirection;
+		objects[i].y += objects[i].yDirection;
 
 		log[i] = objects[i].trace();
 	}
@@ -54,9 +58,14 @@ function GameLoop()
 
 //So I can just say.
 Setup();
-while(true)
+for(var i = 0; i < 200; i++)
 {
 	GameLoop();
 	//What do I want to log?
 	//Push(objects)
+	scrubber.Watch();
 }
+
+scrubber.Save("test.json");
+
+
