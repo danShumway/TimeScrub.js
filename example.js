@@ -66,6 +66,6 @@ for(var i = 0; i < 200; i++)
 	scrubber.Watch();
 }
 
-scrubber.Save("test.json");
+scrubber.Save("test.json", function(){ console.log("success"); });
 
 
