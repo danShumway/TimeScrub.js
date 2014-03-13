@@ -5,6 +5,8 @@ TimeScrub.js is a middleware application that allows simulations to record multi
 
 To use, follow the following template.
 
+
+```javascript
 var timescrub = require('timescrub');
 var yourVariable = new timescrub.app();
 
@@ -19,3 +21,4 @@ yourVariable.Save("filename.json", function() { }); //Works via callback.
 
 //And load...  Gives you a variable with the JSON in it.
 yourVariable.Read("filename.json", function() { console.log(yourVariable.data); }); //Works via callback.
+```
